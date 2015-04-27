@@ -1,2 +1,0 @@
-# ClothesOrganizer
-Our project
