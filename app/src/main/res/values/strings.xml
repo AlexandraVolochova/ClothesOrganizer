@@ -6,4 +6,6 @@
     <string name="button_gallery">My wardrobe</string>
     <string name="button_create">Create new set</string>
     <string name="button_new_thing">Add new thing</string>
+    <string name="wardrobe_title">Wardrobe</string>
+    <string name="creation_title">Set for today</string>
 </resources>

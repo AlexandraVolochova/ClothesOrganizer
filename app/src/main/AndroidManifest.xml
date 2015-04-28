@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".WardrobeActivity"
+            android:label="@string/wardrobe_title"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".CreationActivity"
+            android:label="@string/creation_title"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
