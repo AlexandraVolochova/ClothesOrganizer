@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="button_gallery">My wardrobe</string>
+    <string name="button_create">Create new set</string>
+    <string name="button_new_thing">Add new thing</string>
 </resources>
