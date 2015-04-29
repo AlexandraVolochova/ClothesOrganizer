@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_create"
+        android:onClick="openCreationActivity"
         android:id="@+id/buttonCreate"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
