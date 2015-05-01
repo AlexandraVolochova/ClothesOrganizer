@@ -29,6 +29,12 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void openWardrobeActivity(View view) {
+        Intent i = new Intent(MainActivity.this, WardrobeActivity.class);
+        startActivity(i);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
