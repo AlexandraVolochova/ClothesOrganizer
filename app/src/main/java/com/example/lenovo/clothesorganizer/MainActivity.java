@@ -24,17 +24,6 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    public void openCreationActivity(View view) {
-        Intent i = new Intent(MainActivity.this, CreationActivity.class);
-        startActivity(i);
-    }
-
-    public void openWardrobeActivity(View view) {
-        Intent i = new Intent(MainActivity.this, WardrobeActivity.class);
-        startActivity(i);
-    }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -49,4 +38,16 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void openCreationActivity(View view) {
+        Intent i = new Intent(MainActivity.this, CreationActivity.class);
+        startActivity(i);
+    }
+
+    public void openWardrobeActivity(View view) {
+        Intent i = new Intent(MainActivity.this, WardrobeActivity.class);
+        startActivity(i);
+    }
+
+
 }
