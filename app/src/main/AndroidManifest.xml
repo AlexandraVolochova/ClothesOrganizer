@@ -31,6 +31,11 @@
             android:label="@string/creation_title"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".AdditionActivity"
+            android:label="@string/addition_title"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

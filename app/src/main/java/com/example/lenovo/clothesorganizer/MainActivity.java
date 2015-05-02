@@ -6,14 +6,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.provider.MediaStore;
+import android.os.Environment;
+import java.io.File;
+import android.net.Uri;
 
 public class MainActivity extends ActionBarActivity {
+
+    File directory;
+    public final int REQUEST_CODE_PHOTO = 1;
+    String photoName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createDirectory();
     }
 
 
@@ -49,5 +57,35 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void onClickAdd(View view) {
+        photoName = "photo_" + System.currentTimeMillis() + ".jpg"; // используем системное время, как основную часть имени файла
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //Создаем путь к файлу. Для этого берем путь из directory и имя фотографии
+        // Далее все это записывается в поле интента extra, конвертируясь в Uri
+        File file = new File(directory.getPath() + "/" + photoName);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+        startActivityForResult(intent, REQUEST_CODE_PHOTO);
+    }
 
+    private void createDirectory() {
+        directory = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "MyWardrobe");
+        if (!directory.exists())
+            directory.mkdirs();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_CODE_PHOTO) {
+            if (resultCode == RESULT_OK) {
+             Intent i = new Intent(MainActivity.this, AdditionActivity.class);
+             i.putExtra("com.example.lenovo.clothesorganizer.PHOTO_NAME", photoName);
+             startActivity(i);
+            }
+
+
+        }
+    }
 }

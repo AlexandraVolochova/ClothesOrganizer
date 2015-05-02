@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_new_thing"
+        android:onClick="onClickAdd"
         android:id="@+id/buttonNewThing"
         android:layout_marginTop="148dp"
         android:layout_below="@+id/buttonCreate"
