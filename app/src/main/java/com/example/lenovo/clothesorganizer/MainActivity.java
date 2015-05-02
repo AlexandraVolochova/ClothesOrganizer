@@ -15,7 +15,7 @@ public class MainActivity extends ActionBarActivity {
 
     File directory;
     public final int REQUEST_CODE_PHOTO = 1;
-    String photoName;
+    String photoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +58,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClickAdd(View view) {
-        photoName = "photo_" + System.currentTimeMillis() + ".jpg"; // используем системное время, как основную часть имени файла
+        photoPath = directory.getPath() + "/" +"photo_" + System.currentTimeMillis() + ".jpg"; // используем системное время, как основную часть имени файла
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //Создаем путь к файлу. Для этого берем путь из directory и имя фотографии
-        // Далее все это записывается в поле интента extra, конвертируясь в Uri
-        File file = new File(directory.getPath() + "/" + photoName);
+        File file = new File(photoPath);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         startActivityForResult(intent, REQUEST_CODE_PHOTO);
     }
@@ -81,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
         if (requestCode == REQUEST_CODE_PHOTO) {
             if (resultCode == RESULT_OK) {
              Intent i = new Intent(MainActivity.this, AdditionActivity.class);
-             i.putExtra("com.example.lenovo.clothesorganizer.PHOTO_NAME", photoName);
+             i.putExtra("com.example.lenovo.clothesorganizer.PHOTO_PATH", photoPath);
              startActivity(i);
             }
 

@@ -5,12 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import java.io.File;
+import android.net.Uri;
 
 public class AdditionActivity extends ActionBarActivity {
+
+    String photoPath;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
+        ImageView photo = (ImageView)findViewById(R.id.imageView);
+        photoPath =  getIntent().getExtras().getString("com.example.lenovo.clothesorganizer.PHOTO_PATH");
+        File file = new File(photoPath);
+        photo.setImageURI(Uri.fromFile(file));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -26,4 +36,6 @@ public class AdditionActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
