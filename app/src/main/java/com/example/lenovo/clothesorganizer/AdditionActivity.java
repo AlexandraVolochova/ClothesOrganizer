@@ -13,6 +13,7 @@ public class AdditionActivity extends ActionBarActivity {
 
     String photoPath;
 
+    //Запуск Addition Activity. При запуке в поле ImageView вставляется картинка, переданная из вызывающей активности (MainActivity)
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

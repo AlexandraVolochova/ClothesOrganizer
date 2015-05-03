@@ -17,6 +17,7 @@ public class MainActivity extends ActionBarActivity {
     public final int REQUEST_CODE_PHOTO = 1;
     String photoPath;
 
+    //Запуск MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +25,14 @@ public class MainActivity extends ActionBarActivity {
         createDirectory();
     }
 
-
+    //Методы для меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -47,16 +49,19 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Метод для запуска CreationActivity
     public void openCreationActivity(View view) {
         Intent i = new Intent(MainActivity.this, CreationActivity.class);
         startActivity(i);
     }
 
+    //Метод для запуска WardrobeActivity
     public void openWardrobeActivity(View view) {
         Intent i = new Intent(MainActivity.this, WardrobeActivity.class);
         startActivity(i);
     }
 
+    //Вызов камеры с передачей параметра
     public void onClickAdd(View view) {
         photoPath = directory.getPath() + "/" +"photo_" + System.currentTimeMillis() + ".jpg"; // используем системное время, как основную часть имени файла
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -65,6 +70,7 @@ public class MainActivity extends ActionBarActivity {
         startActivityForResult(intent, REQUEST_CODE_PHOTO);
     }
 
+    // Метод для создания папки, где хранятся фотографии
     private void createDirectory() {
         directory = new File(
                 Environment
@@ -74,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
             directory.mkdirs();
     }
 
+    //То, что делает приложение, после того, как камера вернула ему управление
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQUEST_CODE_PHOTO) {
