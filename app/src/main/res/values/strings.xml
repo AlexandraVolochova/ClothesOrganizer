@@ -9,4 +9,7 @@
     <string name="wardrobe_title">My wardrobe</string>
     <string name="creation_title">Set for today!</string>
     <string name="addition_title">New thing</string>
+    <string name="addition_thing_name">Name</string>
+    <string name="addition_thing_type">Type</string>
+    <string name="addition_thing_name_hint">Key in name</string>
 </resources>
