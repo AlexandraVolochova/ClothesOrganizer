@@ -12,4 +12,14 @@
     <string name="addition_thing_name">Name</string>
     <string name="addition_thing_type">Type</string>
     <string name="addition_thing_name_hint">Key in name</string>
+    <string name="thing_type_up">Up</string>
+    <string name="thing_type_down">Down</string>
+    <string name="thing_type_footwear">Footwear</string>
+    <string name="thing_type_accessories">Accessories</string>
+    <string name="addition_thing_temperature">Temperature</string>
+    <string name="from">from</string>
+    <string name="to">to</string>
+    <string name="addition_thing_comment">Comment</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_ok">OK</string>
 </resources>

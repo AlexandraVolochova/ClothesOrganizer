@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
 
         <ImageView
@@ -14,24 +14,192 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/thingName"
-            android:textSize="20sp"
-            android:hint="@string/addition_thing_name"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/imageView" />
-
-        <EditText
+       <LinearLayout
+           android:id="@+id/linearLayoutName"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:layout_margin="10dp"
-           android:hint="@string/addition_thing_type"
-           android:id="@+id/thingType"
-           android:textSize="20sp"
-           android:layout_centerVertical="true"
-           android:layout_below="@+id/thingName" />
+           android:layout_marginTop="5dp"
+           android:orientation="horizontal"
+           android:layout_below="@id/imageView">
 
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/addition_thing_name"
+               android:textSize="20sp"
+               android:gravity="center_horizontal"
+               android:layout_marginStart="5dp">
+           </TextView>
+
+           <EditText
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:id="@+id/thingName"
+               android:textSize="20sp"
+               android:hint="@string/addition_thing_name"
+               android:layout_margin="5dp">
+           </EditText>
+       </LinearLayout>
+
+       <LinearLayout
+           android:id = "@+id/linearLayoutType"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="5dp"
+           android:orientation="horizontal"
+           android:layout_below="@id/linearLayoutName">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/addition_thing_type"
+               android:textSize="20sp"
+               android:gravity="center_horizontal"
+               android:layout_marginStart="5dp">
+           </TextView>
+           <RadioGroup
+               android:id="@+id/rgType"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:layout_weight="1">
+               <RadioButton
+                   android:id="@+id/rbTypeUp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp"
+                   android:checked="true"
+                   android:text="@string/thing_type_up">
+               </RadioButton>
+               <RadioButton
+                   android:id="@+id/rbTypeDown"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp"
+                   android:text="@string/thing_type_down">
+               </RadioButton>
+               <RadioButton
+                   android:id="@+id/rbTypeFootwear"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp"
+                   android:text="@string/thing_type_footwear">
+               </RadioButton>
+               <RadioButton
+                   android:id="@+id/rbTypeAcc"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp"
+                   android:text="@string/thing_type_accessories">
+               </RadioButton>
+           </RadioGroup>
+
+           </LinearLayout>
+       <LinearLayout
+           android:id = "@+id/linearLayoutTemperature"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="5dp"
+           android:orientation="horizontal"
+           android:layout_below="@id/linearLayoutType">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/addition_thing_temperature"
+               android:textSize="20sp"
+               android:gravity="center"
+               android:layout_gravity="center"
+               android:layout_marginStart="5dp"
+               android:layout_marginEnd="5dp">
+           </TextView>
+
+           <LinearLayout
+               android:id = "@+id/linearLayoutMinTemperature"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="horizontal">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/from"
+                   android:textSize="18sp"
+                   android:gravity="center_horizontal"
+                   android:layout_marginStart="5dp">
+               </TextView>
+               <EditText
+                   android:layout_width="60dp"
+                   android:layout_height="wrap_content"
+                   android:inputType="numberSigned"/>
+               </LinearLayout>
+
+           <LinearLayout
+               android:id = "@+id/linearLayoutMaxTemperature"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="horizontal">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/to"
+                   android:textSize="18sp"
+                   android:gravity="center_horizontal"
+                   android:layout_marginStart="5dp">
+               </TextView>
+               <EditText
+                   android:layout_width="60dp"
+                   android:layout_height="wrap_content"
+                   android:inputType="numberSigned"/>
+           </LinearLayout>
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="5dp"
+           android:orientation="vertical"
+           android:id="@+id/linearLayoutComment"
+           android:layout_below="@id/linearLayoutTemperature">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/addition_thing_comment"
+               android:textSize="20sp"
+               android:gravity="center_horizontal"
+               android:layout_marginStart="5dp">
+           </TextView>
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:inputType="textMultiLine"
+               android:hint="@string/addition_thing_comment"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="5dp"
+           android:layout_marginBottom="5dp"
+           android:orientation="horizontal"
+           android:id="@+id/linearLayoutButtons"
+           android:layout_below="@id/linearLayoutComment">
+
+           <Button
+               android:id="@+id/actAddCancel"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/button_cancel">
+           </Button>
+           <Button
+               android:id="@+id/actAddOK"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/button_ok"/>
+       </LinearLayout>
     </RelativeLayout>
 </ScrollView>
