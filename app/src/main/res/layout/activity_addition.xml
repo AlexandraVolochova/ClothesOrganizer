@@ -35,7 +35,7 @@
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_weight="1"
-               android:id="@+id/thingName"
+               android:id="@+id/edThingName"
                android:textSize="20sp"
                android:hint="@string/addition_thing_name"
                android:layout_margin="5dp">
@@ -132,7 +132,8 @@
                <EditText
                    android:layout_width="60dp"
                    android:layout_height="wrap_content"
-                   android:inputType="numberSigned"/>
+                   android:inputType="numberSigned"
+                   android:id="@+id/edMinTempr"/>
                </LinearLayout>
 
            <LinearLayout
@@ -152,7 +153,8 @@
                <EditText
                    android:layout_width="60dp"
                    android:layout_height="wrap_content"
-                   android:inputType="numberSigned"/>
+                   android:inputType="numberSigned"
+                   android:id="@+id/edMaxTempr"/>
            </LinearLayout>
        </LinearLayout>
 
@@ -176,7 +178,8 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:inputType="textMultiLine"
-               android:hint="@string/addition_thing_comment"/>
+               android:hint="@string/addition_thing_comment"
+               android:id="@+id/edComment"/>
        </LinearLayout>
        <LinearLayout
            android:layout_width="match_parent"
@@ -188,17 +191,18 @@
            android:layout_below="@id/linearLayoutComment">
 
            <Button
-               android:id="@+id/actAddCancel"
+               android:id="@+id/actAddButtonCancel"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
                android:text="@string/button_cancel">
            </Button>
            <Button
-               android:id="@+id/actAddOK"
+               android:id="@+id/actAddButtonOK"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
+               android:onClick="onClick"
                android:text="@string/button_ok"/>
        </LinearLayout>
     </RelativeLayout>

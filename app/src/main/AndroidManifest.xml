@@ -34,7 +34,8 @@
         <activity
             android:name=".AdditionActivity"
             android:label="@string/addition_title"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:noHistory="true">
         </activity>
     </application>
 
