@@ -90,6 +90,8 @@ public class AdditionActivity extends ActionBarActivity  {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.insert("myThing", null,cv);
 
+        dbHelper.close();
+
         Intent i = new Intent(AdditionActivity.this, WardrobeActivity.class);
         startActivity(i);
         
