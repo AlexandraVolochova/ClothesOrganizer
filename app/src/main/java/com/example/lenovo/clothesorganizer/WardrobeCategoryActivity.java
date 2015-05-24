@@ -21,6 +21,22 @@ public class WardrobeCategoryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wardrobe_category);
+        switch (getIntent().getExtras().getString("com.example.lenovo.clothesorganizer.THING_TYPE")){
+            case "Up":
+                setTitle("Up");
+                break;
+            case "Down":
+                setTitle("Down");
+                break;
+            case "Footwear":
+                setTitle("Footwear");
+                break;
+            case "Accessories":
+                setTitle("Accessories");
+                break;
+            default:
+                break;
+        }
     }
 
     //Методы для меню
