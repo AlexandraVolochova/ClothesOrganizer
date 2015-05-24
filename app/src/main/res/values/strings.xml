@@ -22,4 +22,5 @@
     <string name="addition_thing_comment">Comment</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_ok">OK</string>
+    <string name="category_activity">Category</string>
 </resources>
