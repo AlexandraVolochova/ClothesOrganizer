@@ -35,4 +35,24 @@
         android:layout_below="@+id/buttonCreate"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textviewTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        android:textSize="80sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/buttonRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/new3"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/buttonNewThing"
+        android:layout_toStartOf="@+id/buttonNewThing" />
+
+
 </RelativeLayout>
