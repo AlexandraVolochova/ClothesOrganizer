@@ -4,6 +4,9 @@ package com.example.lenovo.clothesorganizer;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -37,7 +40,41 @@ public class WardrobeCategoryActivity extends ActionBarActivity {
             default:
                 break;
         }
+        //создаём помошника для работы с базой
+        DBHelper dbHelper = new DBHelper(this);
+        //подключаемся к базе
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //курсор
+        Cursor cursor = null;
+        //переменные для query (то, что достаем нам данные из базы при определенных условиях)
+
+
     }
+    class DBHelper extends SQLiteOpenHelper {
+
+        public DBHelper(Context context) {
+            // конструктор суперкласса
+            super(context, "myDB", null, 1);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL("create table myThing ("
+                    + "id integer primary key autoincrement,"
+                    + "name text,"
+                    + "type text"
+                    + "minTempr text"
+                    + "maxTempr text"
+                    + "comment text"
+                    + "pathToImage text"+ ");");
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    }
+
 
     //Методы для меню
     @Override
