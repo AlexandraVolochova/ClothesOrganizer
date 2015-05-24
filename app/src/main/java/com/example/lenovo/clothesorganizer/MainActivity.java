@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
         return matchtemper;
-    };
+    }
 
     // функция обновления показаний температуры
     public void refreshTemperature()
@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
         String bashtemp = "";
         bashtemp = getTemperature("http://be.bashkirenergo.ru/weather/ufa/");
         tTemper.setText(bashtemp.concat("°")); // отображение температуры
-    };
+    }
     //Методы для меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

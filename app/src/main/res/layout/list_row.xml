@@ -5,36 +5,36 @@
     android:padding="6dip" >
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/imageInListView"
         android:layout_width="60dp"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="6dip"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/TODO"
         android:src="@drawable/no_image"/>
 
     <TextView
-        android:id="@+id/secondLine"
+        android:id="@+id/commentInListView"
         android:layout_width="fill_parent"
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@id/icon"
+        android:layout_toEndOf="@id/imageInListView"
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="@string/addition_thing_comment"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/firstLine"
+        android:id="@+id/nameInListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
-        android:layout_alignParentRight="true"
+        android:layout_above="@id/commentInListView"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toEndOf="@id/imageInListView"
         android:gravity="center_vertical"
         android:text="@string/addition_thing_name"
         android:textSize="16sp" />

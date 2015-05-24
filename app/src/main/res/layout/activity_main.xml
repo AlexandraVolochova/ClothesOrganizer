@@ -40,7 +40,7 @@
         android:id="@+id/textviewTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="..."
+        android:text="@string/tree_points"
         android:textSize="80sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -52,7 +52,8 @@
         android:src="@drawable/new3"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/buttonNewThing"
-        android:layout_toStartOf="@+id/buttonNewThing" />
+        android:layout_toStartOf="@+id/buttonNewThing"
+        android:contentDescription="@string/TODO" />
 
 
 </RelativeLayout>
