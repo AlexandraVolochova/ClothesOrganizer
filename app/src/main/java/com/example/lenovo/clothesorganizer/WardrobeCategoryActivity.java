@@ -16,16 +16,20 @@ import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.view.View;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class WardrobeCategoryActivity extends ActionBarActivity {
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wardrobe_category);
-        switch (getIntent().getExtras().getString("com.example.lenovo.clothesorganizer.THING_TYPE")){
+        type = getIntent().getExtras().getString("com.example.lenovo.clothesorganizer.THING_TYPE");
+        switch (type){
             case "Up":
                 setTitle("Up");
                 break;
@@ -41,14 +45,26 @@ public class WardrobeCategoryActivity extends ActionBarActivity {
             default:
                 break;
         }
+        final ListView lisView1 = (ListView)findViewById(R.id.listViewCategory);
         //создаём помошника для работы с базой
         DBHelper dbHelper = new DBHelper(this);
         //подключаемся к базе
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+
         //курсор
         Cursor cursor = null;
-        //переменные для query (то, что достаем нам данные из базы при определенных условиях)
-
+        String[] sType = null;
+        sType = new String[] {type};
+        cursor = db.query("myThing", null, null, null, null, null, null);
+        if(cursor.moveToFirst()) {
+            lisView1.setAdapter(new MyWardrobeAdapter(this, cursor));
+        }
+        else {
+            TextView textView = (TextView) findViewById(R.id.empty);
+            textView.setText("I don't want to work");
+        }
+        cursor.close();
+        dbHelper.close();
 
     }
     
