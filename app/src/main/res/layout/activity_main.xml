@@ -11,9 +11,9 @@
         android:text="@string/button_create"
         android:onClick="openCreationActivity"
         android:id="@+id/buttonCreate"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/buttonGallery"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="114dp" />
+        android:layout_marginBottom="95dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,29 +31,104 @@
         android:text="@string/button_new_thing"
         android:onClick="onClickAdd"
         android:id="@+id/buttonNewThing"
-        android:layout_marginTop="148dp"
-        android:layout_below="@+id/buttonCreate"
+        android:layout_marginBottom="138dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/textviewTemperature"
+   <TextView
+        android:id="@+id/cityText"
+        android:textSize="40px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tree_points"
-        android:textSize="80sp"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageButton
-        android:id="@+id/buttonRefresh"
+    <ImageView
+        android:id="@+id/condIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/new3"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/buttonNewThing"
-        android:layout_toStartOf="@+id/buttonNewThing"
-        android:contentDescription="@string/TODO" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/cityText" />
+
+    <TextView
+        android:id="@+id/condDescr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/windDeg"
+        android:layout_alignLeft="@+id/cityText"
+        android:layout_alignStart="@+id/cityText" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:textSize="80px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCreate"
+        android:layout_alignRight="@+id/cityText"
+        android:layout_alignEnd="@+id/cityText"
+        android:layout_marginBottom="56dp" />
+
+    <TextView
+        android:id="@+id/pressLab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressure"
+        android:layout_alignTop="@+id/humLab"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/pressLab"
+        android:layout_toRightOf="@id/pressLab" />
+
+    <TextView
+        android:id="@+id/humLab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity"
+        android:layout_below="@+id/condIcon"
+        android:layout_toRightOf="@+id/buttonCreate"
+        android:layout_toEndOf="@+id/buttonCreate"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/humLab"
+        android:layout_toRightOf="@id/humLab"
+        android:layout_marginLeft="4dp"/>
+
+
+    <TextView
+        android:id="@+id/windSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/temp"
+        android:layout_alignEnd="@+id/temp" />
+
+    <TextView
+        android:id="@+id/windDeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/windSpeed"
+        android:layout_alignRight="@+id/buttonNewThing"
+        android:layout_alignEnd="@+id/buttonNewThing" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_below="@+id/buttonGallery"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:onClick="onClicweather"
+        android:src="@drawable/new3" />
 
 
 </RelativeLayout>
