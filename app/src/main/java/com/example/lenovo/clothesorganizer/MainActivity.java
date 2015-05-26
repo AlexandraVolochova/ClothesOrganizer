@@ -87,8 +87,7 @@ public class MainActivity extends ActionBarActivity {
 
             if (weather.iconData != null && weather.iconData.length > 0) {
                 Bitmap img = BitmapFactory.decodeByteArray(weather.iconData, 0, weather.iconData.length);
-                imgView.setImageBitmap(img);
-            }
+                imgView.setImageBitmap(img);}
 
             cityText.setText(weather.location.getCity() + "," + weather.location.getCountry());
             condDescr.setText("");
@@ -97,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
             press.setText("" + weather.currentCondition.getPressure() + " hPa");
             windSpeed.setText("");
             windDeg.setText("");
+
 
         }
 
