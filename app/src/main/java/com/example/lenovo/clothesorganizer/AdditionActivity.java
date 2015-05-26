@@ -24,6 +24,8 @@ public class AdditionActivity extends ActionBarActivity  {
     EditText edName, edMinTempr, edMaxTempr, edComment;
     ImageView photo;
     RadioGroup rgType;
+    private static final String DATABASE_NAME = "myDB";
+    private static final String DATABASE_TABLE = "myThing";
 
     //Запуск Addition Activity. При запуке в поле ImageView вставляется картинка, переданная из вызывающей активности (MainActivity)
     @Override
@@ -88,7 +90,7 @@ public class AdditionActivity extends ActionBarActivity  {
         cv.put("pathToImage", photoPath);
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.insert("myThing", null,cv);
+        long row = db.insert(DATABASE_TABLE, null,cv);
 
         dbHelper.close();
 

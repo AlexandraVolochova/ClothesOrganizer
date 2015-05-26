@@ -1,24 +1,22 @@
 package com.example.lenovo.clothesorganizer;
 
 
-import android.content.ContentValues;
+
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CursorAdapter;
 import android.widget.ImageView;
-import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
 import java.io.File;
 
-public class MyWardrobeAdapter extends ResourceCursorAdapter {
-    public MyWardrobeAdapter (Context context, int layout, Cursor cursor) {
-        super(context, layout, cursor);
+public class MyWardrobeAdapter extends CursorAdapter {
+    public MyWardrobeAdapter (Context context, Cursor cursor) {
+        super(context, cursor);
     }
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
@@ -32,6 +30,15 @@ public class MyWardrobeAdapter extends ResourceCursorAdapter {
         String photoPath =  cursor.getString(cursor.getColumnIndex("pathToImage"));
         File file = new File(photoPath);
         photo.setImageURI(Uri.fromFile(file));
+    }
+
+    @Override
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View view = inflater.inflate(R.layout.list_row, parent, false);
+            bindView(view, context, cursor);
+            return view;
+
     }
 
 }
