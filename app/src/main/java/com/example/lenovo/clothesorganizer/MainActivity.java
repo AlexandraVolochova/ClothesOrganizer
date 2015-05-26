@@ -1,23 +1,21 @@
 package com.example.lenovo.clothesorganizer;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.io.File;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,71 +24,38 @@ public class MainActivity extends ActionBarActivity {
     public final int REQUEST_CODE_PHOTO = 1;
     String photoPath;
 
+    private TextView cityText;
+    private TextView condDescr;
+    private TextView temp;
+    private TextView press;
+    private TextView windSpeed;
+    private TextView windDeg;
+
+    private TextView hum;
+    private ImageView imgView;
+
+
     //Запуск MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createDirectory();
-        final ImageButton button = (ImageButton) findViewById(R.id.buttonRefresh);
+        //String city = "Moscow,Ru";
 
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                refreshTemperature();
-            }
-        });
+        cityText = (TextView) findViewById(R.id.cityText);
+        condDescr = (TextView) findViewById(R.id.condDescr);
+        temp = (TextView) findViewById(R.id.temp);
+        hum = (TextView) findViewById(R.id.hum);
+        press = (TextView) findViewById(R.id.press);
+        windSpeed = (TextView) findViewById(R.id.windSpeed);
+        imgView = (ImageView) findViewById(R.id.condIcon);
 
-        refreshTemperature(); // при запуске программы сразу выводим температуру
-    }
-    // фукция загрузки температуры
-    public String getTemperature(String urlsite)
-    {
-        String matchtemper = "";
-        try
-        {
-            // загрузка страницы
-            URL url = new URL(urlsite);
-            URLConnection conn = url.openConnection();
-            InputStreamReader rd = new InputStreamReader(conn.getInputStream());
-            StringBuilder allpage = new StringBuilder();
-            int n = 0;
-            char[] buffer = new char[40000];
-            while (n >= 0)
-            {
-                n = rd.read(buffer, 0, buffer.length);
-                if (n > 0)
-                {
-                    allpage.append(buffer, 0, n);
-                }
-            }
-            // работаем с регулярным выражением
-            final Pattern pattern = Pattern.compile
-                    ("[^-+0]+([-+0-9]+)[^<]+[^(а-яА-ЯёЁa-zA-Z0-9)]+([а-яА-ЯёЁa-zA-Z ]+)");
-            Matcher matcher = pattern.matcher(allpage.toString());
-            if (matcher.find())
-            {
-                matchtemper = matcher.group(1);
-            }
-            return matchtemper;
-        }
-        catch (Exception e)
-        {
-
-        }
-        return matchtemper;
+       // JSONWeatherTask task = new JSONWeatherTask();
+       // task.execute(new String[]{city});
     }
 
-    // функция обновления показаний температуры
-    public void refreshTemperature()
-    {
-        final TextView tTemper = (TextView) findViewById(R.id.textviewTemperature);
-        String bashtemp = "";
-        bashtemp = getTemperature("http://be.bashkirenergo.ru/weather/ufa/");
-        tTemper.setText(bashtemp.concat("°")); // отображение температуры
-    }
+
     //Методы для меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -100,20 +65,43 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        public void onClicweather (View view) {
+            Weather weather = new Weather();
+            String data = ( (new WeatherHttpClient()).getWeatherData());
+
+            try {
+                weather = JSONWeatherParser.getWeather(data);
+
+                // Let's retrieve the icon
+                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+           // return weather;
+
+
+       // protected void onPostExecute(Weather weather) {
+           // super.onPostExecute(weather);
+
+            if (weather.iconData != null && weather.iconData.length > 0) {
+                Bitmap img = BitmapFactory.decodeByteArray(weather.iconData, 0, weather.iconData.length);
+                imgView.setImageBitmap(img);
+            }
+
+            cityText.setText(weather.location.getCity() + "," + weather.location.getCountry());
+            condDescr.setText("");
+            temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + " C");
+            hum.setText("" + weather.currentCondition.getHumidity() + "%");
+            press.setText("" + weather.currentCondition.getPressure() + " hPa");
+            windSpeed.setText("");
+            windDeg.setText("");
+
         }
 
-        return super.onOptionsItemSelected(item);
-    }
+
 
     //Метод для запуска CreationActivity
     public void openCreationActivity(View view) {
