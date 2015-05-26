@@ -30,7 +30,6 @@ public class MainActivity extends ActionBarActivity {
     private TextView press;
     private TextView windSpeed;
     private TextView windDeg;
-
     private TextView hum;
     private ImageView imgView;
 
